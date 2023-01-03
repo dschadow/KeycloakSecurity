@@ -1,0 +1,31 @@
+openapi: 3.0.3
+
+info:
+  title: Keycloak Security API
+  description: Keycloak Security API specification
+  version: v1
+
+servers:
+  - url: 'http://localhost:8080'
+
+paths:
+  /v1/projects:
+    description: Get a paginated list of all projects without critical details
+    get:
+      tags:
+        - Projects
+      operationId: readProjects
+      responses:
+        200:
+          description: A list of projects without critical details
+  /v1/project-details:
+    description: Get a paginated list of all projects with all details
+    get:
+      tags:
+        - ProjectDetails
+      operationId: readProjectDetails
+      responses:
+        200:
+          description: A list of projects with all details
+
+  
