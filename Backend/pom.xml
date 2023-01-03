@@ -80,7 +80,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>${docker.image.prefix}/keycloaksecurity-${project.artifactId}:${project.version}</name>
+                        <name>${docker.image.prefix}/keycloak-security-${project.artifactId}:${project.version}</name>
                     </image>
                     <excludes>
                         <exclude>
