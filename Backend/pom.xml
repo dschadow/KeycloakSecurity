@@ -73,14 +73,14 @@
     </dependencies>
 
     <build>
-        <finalName>keycloak-security-${project.version}</finalName>
+        <finalName>keycloak-security-backend-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>${docker.image.prefix}/keycloak-security-${project.artifactId}:${project.version}</name>
+                        <name>${docker.image.prefix}/keycloak-security-backend:${project.version}</name>
                     </image>
                     <excludes>
                         <exclude>
