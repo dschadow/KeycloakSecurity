@@ -11,11 +11,13 @@
     <groupId>de.dominikschadow.keycloaksecurity</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Backend</name>
-    <description>Backend</description>
+    <name>Keycloak Security Backend</name>
+    <description>Backend web application for the Keycloak Security demo project.</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
