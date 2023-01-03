@@ -5,10 +5,12 @@ import de.dominikschadow.keycloaksecurity.model.ProjectOverview;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ProjectOverviewController implements ProjectOverviewApi {
     @Override
-    public ResponseEntity<ProjectOverview> readProjectOverview() {
+    public ResponseEntity<List<ProjectOverview>> readProjectOverview() {
         return ProjectOverviewApi.super.readProjectOverview();
     }
 }

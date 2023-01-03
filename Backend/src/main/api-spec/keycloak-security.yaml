@@ -21,7 +21,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectOverview'
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectOverview'
   /v1/projects:
     description: Get a paginated list of all projects with all details
     get:
@@ -34,7 +36,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
 
 components:
   schemas:
