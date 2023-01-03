@@ -15,6 +15,7 @@
     <description>Backend web application for the Keycloak Security demo project.</description>
 
     <properties>
+        <docker.image.prefix>dschadow</docker.image.prefix>
         <java.version>17</java.version>
     </properties>
 
@@ -78,6 +79,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <image>
+                        <name>${docker.image.prefix}/keycloaksecurity-${project.artifactId}:${project.version}</name>
+                    </image>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
