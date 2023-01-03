@@ -1,10 +1,10 @@
-package de.dominikschadow.keycloaksecurity.backend;
+package de.dominikschadow.keycloaksecurity;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class ApplicationTests {
 
     @Test
     void contextLoads() {
