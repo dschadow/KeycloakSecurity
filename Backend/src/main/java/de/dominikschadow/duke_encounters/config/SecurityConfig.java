@@ -18,6 +18,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeConfig -> {
+                    // TODO complete configuration
                     authorizeConfig.requestMatchers("/v1/encounters-overview", "/error", "/favicon.ico").permitAll();
                     authorizeConfig.anyRequest().authenticated();
                 })
@@ -25,6 +26,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    // TODO switch to Keycloak
     @Bean
     public UserDetailsService userDetailsService() {
         return new InMemoryUserDetailsManager(
