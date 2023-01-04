@@ -44,8 +44,9 @@ components:
   schemas:
     ProjectOverview:
       type: object
+      description: Read only object containing a subset of project properties
       properties:
-        uuid:
+        id:
           type: string
           format: uuid
         name:
@@ -54,15 +55,34 @@ components:
           maxLength: 50
     Project:
       type: object
+      description: Represents a project with all available properties
       properties:
-        uuid:
+        id:
+          type: string
+          format: uuid
+        userId:
           type: string
           format: uuid
         name:
           type: string
           minLength: 5
           maxLength: 50
-        rating:
+        description:
+          type: string
+          maxLength: 1024
+          nullable: true
+        priority:
           type: integer
           minimum: 1
           maximum: 5
+    User:
+      type: object
+      description: Represents a user of the web application
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+          minLength: 3
+          maxLength: 20
