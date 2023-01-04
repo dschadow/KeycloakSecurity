@@ -8,11 +8,11 @@
         <version>3.0.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>de.dominikschadow.keycloaksecurity</groupId>
+    <groupId>de.dominikschadow.duke-encounters</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Keycloak Security Backend</name>
-    <description>Backend web application for the Keycloak Security demo project.</description>
+    <name>Duke Encounters Backend</name>
+    <description>Backend web application for the Duke Encounters demo project.</description>
 
     <properties>
         <docker.image.prefix>dschadow</docker.image.prefix>
@@ -73,14 +73,14 @@
     </dependencies>
 
     <build>
-        <finalName>keycloak-security-backend-${project.version}</finalName>
+        <finalName>duke-encounters-backend-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>${docker.image.prefix}/keycloak-security-backend:${project.version}</name>
+                        <name>${docker.image.prefix}/duke-encounters-backend:${project.version}</name>
                     </image>
                     <excludes>
                         <exclude>
@@ -100,11 +100,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/api-spec/keycloak-security.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/api-spec/duke-encounters.yaml</inputSpec>
                             <generatorName>spring</generatorName>
-                            <packageName>de.dominikschadow.keycloaksecurity</packageName>
-                            <apiPackage>de.dominikschadow.keycloaksecurity.api</apiPackage>
-                            <modelPackage>de.dominikschadow.keycloaksecurity.model</modelPackage>
+                            <packageName>de.dominikschadow.duke_encounters</packageName>
+                            <apiPackage>de.dominikschadow.duke_encounters.api</apiPackage>
+                            <modelPackage>de.dominikschadow.duke_encounters.model</modelPackage>
                             <configOptions>
                                 <interfaceOnly>true</interfaceOnly>
                                 <useSpringBoot3>true</useSpringBoot3>

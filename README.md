@@ -1,7 +1,7 @@
 KeycloakSecurity
 =====
 
-This repository contains different projects integrating Keycloak.
+This repository contains a web application named **Duke Encounters** which uses OpenAPI to generate its REST endpoints and models and uses Keycloak as user management. A fully working Keycloak is provided as Docker container.
 
 # Requirements
 

@@ -1,61 +1,61 @@
 openapi: 3.0.3
 
 info:
-  title: Keycloak Security API
-  description: Keycloak Security API specification
+  title: Duke Encounters API
+  description: Duke Encounters API specification
   version: v1
 
 servers:
   - url: 'http://localhost:8080'
 
 paths:
-  /v1/projects-overview:
-    description: Get a paginated list of all projects without critical details
+  /v1/encounters-overview:
+    description: Get a paginated list of all Duke encounters without internal details
     get:
       tags:
-        - ProjectOverview
-      operationId: readProjectOverview
+        - EncounterOverview
+      operationId: readEncountersOverview
       responses:
         200:
-          description: A list of projects without critical details
+          description: A list of Duke encounters without internal details
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ProjectOverview'
-  /v1/projects:
-    description: Get a paginated list of all projects with all details
+                  $ref: '#/components/schemas/EncounterOverview'
+  /v1/encounters:
+    description: Get a paginated list of all Duke encounters with all details
     get:
       tags:
-        - Project
-      operationId: readProjects
+        - Encounter
+      operationId: readEncounters
       responses:
         200:
-          description: A list of projects with all details
+          description: A list of Duke encounters with all details
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Project'
+                  $ref: '#/components/schemas/Encounter'
 
 components:
   schemas:
-    ProjectOverview:
+    EncounterOverview:
       type: object
-      description: Read only object containing a subset of project properties
+      description: Read only object containing a subset of Duke encounter details
       properties:
         id:
           type: string
           format: uuid
-        name:
+        event:
           type: string
           minLength: 5
           maxLength: 50
-    Project:
+    Encounter:
       type: object
-      description: Represents a project with all available properties
+      description: Represents a Duke encounter with all available details
       properties:
         id:
           type: string
@@ -63,7 +63,7 @@ components:
         userId:
           type: string
           format: uuid
-        name:
+        event:
           type: string
           minLength: 5
           maxLength: 50
@@ -71,10 +71,10 @@ components:
           type: string
           maxLength: 1024
           nullable: true
-        priority:
+        likeliness:
           type: integer
           minimum: 1
-          maximum: 5
+          maximum: 10
     User:
       type: object
       description: Represents a user of the web application
