@@ -82,6 +82,9 @@ components:
     EncounterOverview:
       type: object
       description: Read only object containing a subset of Duke encounter details
+      example:
+        id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        event: JavaOne
       properties:
         id:
           type: string
@@ -93,6 +96,12 @@ components:
     Encounter:
       type: object
       description: Represents a Duke encounter with all available details
+      example:
+        id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        userId: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+        event: JavaOne
+        description: At the bar
+        likeliness: 10
       properties:
         id:
           type: string
@@ -115,6 +124,9 @@ components:
     CreateEncounter:
       type: object
       description: Create a new Duke encounter with all required information
+      example:
+        event: JavaOne
+        description: At the bar
       properties:
         event:
           type: string
@@ -127,6 +139,9 @@ components:
     User:
       type: object
       description: Represents a user of the web application
+      example:
+        id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        username: The Duke
       properties:
         id:
           type: string
