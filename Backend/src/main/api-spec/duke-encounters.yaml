@@ -10,8 +10,8 @@ servers:
 
 paths:
   /v1/encounters-overview:
-    description: Get a paginated list of all Duke encounters without internal details
     get:
+      description: Get a paginated list of all Duke encounters without internal details
       tags:
         - EncounterOverview
       operationId: readEncountersOverview
@@ -25,8 +25,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/EncounterOverview'
   /v1/encounters:
-    description: Get a paginated list of all Duke encounters with all details
     get:
+      description: Get a paginated list of all Duke encounters with all details
       tags:
         - Encounter
       operationId: readEncounters
@@ -39,6 +39,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Encounter'
+
 
 components:
   schemas:
