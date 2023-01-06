@@ -2,8 +2,16 @@ openapi: 3.0.3
 
 info:
   title: Duke Encounters API
-  description: Duke Encounters API specification
+  description: |
+    **Duke Encounters** is a demo web application with a Spring Boot backend. It is using OpenAPI to generate all endpoints and models and requires a Keycloak.
   version: v1
+  contact:
+    name: Dominik Schadow
+    email: dominikschadow@gmail.com
+    url: https://github.com/dschadow/KeycloakSecurity
+  license:
+    url: https://github.com/dschadow/KeycloakSecurity/blob/main/LICENSE
+    name: Apache License 2.0
 
 servers:
   - url: 'http://localhost:8080'
@@ -164,3 +172,5 @@ components:
       flows:
         authorizationCode:
           authorizationUrl: http://localhost:8090/oauth2/authorize
+          tokenUrl: http://localhost:8090/oauth2/authorize
+          scopes: {}
