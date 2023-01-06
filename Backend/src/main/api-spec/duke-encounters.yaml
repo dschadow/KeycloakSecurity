@@ -16,6 +16,12 @@ info:
 servers:
   - url: 'http://localhost:8080'
 
+tags:
+  - name: EncounterOverview
+    description: Public overview of all encounters without internal details
+  - name: Encounter
+    description: Authorized endpoints to modify and retrieve encounters with all details
+
 paths:
   /v1/encounters-overview:
     get:
