@@ -17,30 +17,14 @@ servers:
   - url: 'http://localhost:8080'
 
 tags:
-  - name: EncounterOverview
-    description: Public overview of all encounters without internal details
   - name: Encounter
-    description: Authorized endpoints to modify and retrieve encounters with all details
+    description: Mostly authorized endpoints to modify and retrieve encounters with all details
 
 paths:
-  /v1/encounters-overview:
-    get:
-      description: Get a paginated list of all Duke encounters without internal details
-      tags:
-        - EncounterOverview
-      operationId: readEncountersOverview
-      responses:
-        200:
-          description: A list of Duke encounters without internal details
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/EncounterOverview'
   /v1/encounters:
     get:
-      description: Get a paginated list of all Duke encounters with all details
+      summary: Get a paginated list with all Duke encounters
+      description: Authorized endpoint returning a paginated list of all Duke encounters with all details
       tags:
         - Encounter
       operationId: readEncounters
@@ -48,15 +32,14 @@ paths:
         - KeycloakToken: []
       responses:
         200:
-          description: A list of Duke encounters with all details
+          description: A list of Duke encounters
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Encounter'
+                $ref: '#/components/schemas/EncounterList'
     post:
-      description: Create a new encounters entry
+      summary: Create a new encounters entry
+      description: Authorized endpoint creating a new encounters entry
       tags:
         - Encounter
       operationId: createEncounter
@@ -74,9 +57,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Encounter'
+  /v1/encounters/latest:
+    get:
+      summary: Get a list with the latest Duke encounters
+      description: Public endpoint returning a list the latest Duke encounters
+      tags:
+        - Encounter
+      operationId: readLatestEncounters
+      responses:
+        200:
+          description: A list of the latest Duke encounters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EncounterList'
   /v1/encounters/{encounter_id}:
     get:
-      description: Get a single encounter
+      summary: Get a single encounter
+      description: Authorized endpoint returning a single encounter with all details
       tags:
         - Encounter
       operationId: readEncounter
@@ -98,26 +96,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Encounter'
+        404:
+          description: Encounter not found
 
 components:
   schemas:
-    EncounterOverview:
+    EncounterList:
       type: object
-      description: Read only object containing a subset of Duke encounter details
-      example:
-        id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-        event: JavaOne
+      description: A list of Duke encounters
       properties:
-        id:
-          type: string
-          format: uuid
-        event:
-          type: string
-          minLength: 5
-          maxLength: 50
-        date:
-          type: string
-          format: date
+        encounters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Encounter'
     Encounter:
       type: object
       description: Represents a Duke encounter with all available details
