@@ -115,6 +115,9 @@ components:
           type: string
           minLength: 5
           maxLength: 50
+        date:
+          type: string
+          format: date
     Encounter:
       type: object
       description: Represents a Duke encounter with all available details
@@ -135,6 +138,9 @@ components:
           type: string
           minLength: 5
           maxLength: 50
+        date:
+          type: string
+          format: date
         description:
           type: string
           maxLength: 1024
@@ -158,6 +164,9 @@ components:
           type: string
           maxLength: 1024
           nullable: true
+        date:
+          type: string
+          format: date
     User:
       type: object
       description: Represents a user of the web application
@@ -172,6 +181,9 @@ components:
           type: string
           minLength: 3
           maxLength: 20
+        creation_date:
+          type: string
+          format: date
   securitySchemes:
     KeycloakToken:
       type: oauth2
