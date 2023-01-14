@@ -74,7 +74,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Encounter'
-  /v1/encounters/{encounterId}:
+  /v1/encounters/{encounter_id}:
     get:
       description: Get a single encounter
       tags:
@@ -83,7 +83,7 @@ paths:
       security:
         - KeycloakToken: []
       parameters:
-        - name: encounterId
+        - name: encounter_id
           in: path
           required: true
           schema:
@@ -120,7 +120,7 @@ components:
       description: Represents a Duke encounter with all available details
       example:
         id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-        userId: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
         event: JavaOne
         description: At the bar
         likeliness: 10
@@ -128,7 +128,7 @@ components:
         id:
           type: string
           format: uuid
-        userId:
+        user_id:
           type: string
           format: uuid
         event:
