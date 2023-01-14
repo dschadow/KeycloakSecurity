@@ -19,6 +19,8 @@ servers:
 tags:
   - name: Encounter
     description: Mostly authorized endpoints to modify and retrieve encounters with all details
+  - name: Confirmation
+    description: Authorized endpoints to modify and retrieve confirmations for existing encounters
 
 paths:
   /v1/encounters:
@@ -71,7 +73,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EncounterList'
-  /v1/encounters/{encounter_id}:
+  /v1/encounters/{id}:
     get:
       summary: Get a single encounter
       description: Authorized endpoint returning a single encounter with all details
@@ -81,7 +83,7 @@ paths:
       security:
         - KeycloakToken: []
       parameters:
-        - name: encounter_id
+        - name: id
           in: path
           required: true
           schema:
@@ -98,6 +100,36 @@ paths:
                 $ref: '#/components/schemas/Encounter'
         404:
           description: Encounter not found
+  /v1/encounters/{id}/confirmations:
+    post:
+      summary: Create a new confirmation for an encounter
+      description: Authorized endpoint creating a new confirmation for an existing encounter
+      tags:
+        - Confirmation
+      operationId: createConfirmation
+      security:
+        - KeycloakToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The encounter's ID
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConfirmation'
+      responses:
+        201:
+          description: Successfully confirmed an encounter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Encounter'
 
 components:
   schemas:
@@ -116,8 +148,12 @@ components:
         id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
         user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
         event: JavaOne
+        event_date: 16.10.2022
+        location: Las Vegas
+        creation_date: 17.10.2022
         description: At the bar
         likeliness: 10
+        confirmations: 27
       properties:
         id:
           type: string
@@ -129,7 +165,13 @@ components:
           type: string
           minLength: 5
           maxLength: 50
-        date:
+        event_date:
+          type: string
+          format: date
+        location:
+          type: string
+          maxLength: 50
+        creation_date:
           type: string
           format: date
         description:
@@ -140,6 +182,10 @@ components:
           type: integer
           minimum: 1
           maximum: 10
+        confirmations:
+          type: integer
+          minimum: 0
+          nullable: true
     CreateEncounter:
       type: object
       description: Create a new Duke encounter with all required information
@@ -151,19 +197,30 @@ components:
           type: string
           minLength: 5
           maxLength: 50
+        event_date:
+          type: string
+          format: date
+        location:
+          type: string
+          maxLength: 50
         description:
           type: string
           maxLength: 1024
           nullable: true
-        date:
+    CreateConfirmation:
+      type: object
+      description: Create a new confirmation of an existing encounter with all required information
+      properties:
+        encounter_id:
           type: string
-          format: date
+          format: uuid
     User:
       type: object
       description: Represents a user of the web application
       example:
         id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
         username: The Duke
+        creation_date: 21.09.2022
       properties:
         id:
           type: string
