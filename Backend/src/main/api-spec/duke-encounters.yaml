@@ -30,8 +30,6 @@ paths:
       tags:
         - Encounter
       operationId: readEncounters
-      security:
-        - KeycloakToken: []
       responses:
         200:
           description: A list of Duke encounters
@@ -45,8 +43,6 @@ paths:
       tags:
         - Encounter
       operationId: createEncounter
-      security:
-        - KeycloakToken: []
       requestBody:
         content:
           application/json:
@@ -66,6 +62,7 @@ paths:
       tags:
         - Encounter
       operationId: readLatestEncounters
+      security: []
       responses:
         200:
           description: A list of the latest Duke encounters
@@ -128,8 +125,6 @@ paths:
       tags:
         - Encounter
       operationId: readEncounter
-      security:
-        - KeycloakToken: []
       parameters:
         - name: id
           in: path
@@ -155,8 +150,6 @@ paths:
       tags:
         - Confirmation
       operationId: createConfirmation
-      security:
-        - KeycloakToken: []
       parameters:
         - name: id
           in: path
@@ -288,3 +281,6 @@ components:
           authorizationUrl: http://localhost:8090/oauth2/authorize
           tokenUrl: http://localhost:8090/oauth2/authorize
           scopes: {}
+
+security:
+  - KeycloakToken: [ ]
