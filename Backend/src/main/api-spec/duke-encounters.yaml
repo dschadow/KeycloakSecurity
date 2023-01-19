@@ -73,6 +73,7 @@ paths:
             application/json:
               examples:
                 JavaLand:
+                  summary: One encounter on a single event
                   value:
                     id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
                     user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa7
@@ -84,6 +85,7 @@ paths:
                     likeliness: 1
                     confirmations: 0
                 JavaOne:
+                  summary: Two encounters on a single event
                   value:
                     items:
                       - id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
