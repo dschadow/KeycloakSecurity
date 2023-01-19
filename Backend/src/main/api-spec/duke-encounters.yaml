@@ -72,7 +72,7 @@ paths:
           content:
             application/json:
               examples:
-                JavaLand:
+                Single:
                   summary: One encounter on a single event
                   value:
                     id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
@@ -84,8 +84,8 @@ paths:
                     description: On the roller coaster
                     likeliness: 1
                     confirmations: 0
-                JavaOne:
-                  summary: Two encounters on a single event
+                Multiple:
+                  summary: Three encounters on two events
                   value:
                     items:
                       - id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
@@ -106,6 +106,15 @@ paths:
                         description: In the pool
                         likeliness: 5
                         confirmations: 3
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa7
+                        event: JavaLand
+                        event_date: 2021-03-21
+                        location: Phantasialand
+                        creation_date: 2021-03-30
+                        description: On the roller coaster
+                        likeliness: 1
+                        confirmations: 0
               schema:
                 $ref: '#/components/schemas/EncounterList'
   /v1/encounters/{id}:
