@@ -71,6 +71,39 @@ paths:
           description: A list of the latest Duke encounters
           content:
             application/json:
+              examples:
+                JavaLand:
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                    user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa7
+                    event: JavaLand
+                    event_date: 2021-03-21
+                    location: Phantasialand
+                    creation_date: 2021-03-30
+                    description: On the roller coaster
+                    likeliness: 1
+                    confirmations: 0
+                JavaOne:
+                  value:
+                    items:
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaOne
+                        event_date: 2022-10-16
+                        location: Las Vegas
+                        creation_date: 2022-10-17
+                        description: At the bar
+                        likeliness: 10
+                        confirmations: 27
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa5
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaOne
+                        event_date: 2022-10-16
+                        location: Las Vegas
+                        creation_date: 2022-10-18
+                        description: In the pool
+                        likeliness: 5
+                        confirmations: 3
               schema:
                 $ref: '#/components/schemas/EncounterList'
   /v1/encounters/{id}:
@@ -148,9 +181,9 @@ components:
         id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
         user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
         event: JavaOne
-        event_date: 16.10.2022
+        event_date: 2022-10-16
         location: Las Vegas
-        creation_date: 17.10.2022
+        creation_date: 2022-10-17
         description: At the bar
         likeliness: 10
         confirmations: 27
