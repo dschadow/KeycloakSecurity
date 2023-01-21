@@ -148,7 +148,7 @@ paths:
       summary: Create a new confirmation for an encounter
       description: Authorized endpoint creating a new confirmation for an existing encounter
       tags:
-        - Confirmation
+        - Encounter
       operationId: createConfirmation
       parameters:
         - name: id
