@@ -118,6 +118,59 @@ paths:
                     items: []
               schema:
                 $ref: '#/components/schemas/EncounterList'
+  /v1/encounters/own:
+    get:
+      summary: Get a list with Duke encounters belonging to the current user
+      description: Authorized endpoint returning a list of all own Duke encounters
+      tags:
+        - Encounter
+      operationId: readOwnEncounters
+      responses:
+        200:
+          description: A list of all own Duke encounters
+          content:
+            application/json:
+              examples:
+                multiple:
+                  summary: Two encounters
+                  value:
+                    items:
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaOne
+                        event_date: 2022-10-16
+                        location: Las Vegas
+                        creation_date: 2022-10-17
+                        description: At the bar
+                        likeliness: 10
+                        confirmations: 27
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaLand
+                        event_date: 2021-03-21
+                        location: Phantasialand
+                        creation_date: 2021-03-30
+                        description: On the roller coaster
+                        likeliness: 1
+                        confirmations: 0
+                single:
+                  summary: One encounter on a single event
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                    user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                    event: JavaLand
+                    event_date: 2021-03-21
+                    location: Phantasialand
+                    creation_date: 2021-03-30
+                    description: On the roller coaster
+                    likeliness: 1
+                    confirmations: 0
+                none:
+                  summary: No encounters
+                  value:
+                    items: []
+              schema:
+                $ref: '#/components/schemas/EncounterList'
   /v1/encounters/{id}:
     get:
       summary: Get a single encounter
@@ -178,7 +231,6 @@ paths:
       tags:
         - Confirmation
       operationId: readLatestConfirmations
-      security: []
       responses:
         200:
           description: A list of the latest confirmations
@@ -233,7 +285,6 @@ paths:
       tags:
         - Confirmation
       operationId: readOwnConfirmations
-      security: []
       responses:
         200:
           description: A list of own confirmations
