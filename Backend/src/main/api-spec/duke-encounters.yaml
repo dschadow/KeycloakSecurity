@@ -58,7 +58,7 @@ paths:
   /v1/encounters/latest:
     get:
       summary: Get a list with the latest Duke encounters
-      description: Public endpoint returning a list the latest Duke encounters
+      description: Public endpoint returning a list of the latest Duke encounters
       tags:
         - Encounter
       operationId: readLatestEncounters
@@ -171,6 +171,109 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Encounter'
+  /v1/confirmations/latest:
+    get:
+      summary: Get a list with the latest encounter confirmations
+      description: Authorized endpoint returning a list of the latest encounter confirmations
+      tags:
+        - Confirmation
+      operationId: readLatestConfirmations
+      security: []
+      responses:
+        200:
+          description: A list of the latest confirmations
+          content:
+            application/json:
+              examples:
+                multiple:
+                  summary: Three confirmations on two encounters
+                  value:
+                    items:
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaOne
+                        event_date: 2022-10-16
+                        location: Las Vegas
+                        creation_date: 2022-10-17
+                        encounter_date: 2022-10-17
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa5
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaOne
+                        event_date: 2022-10-16
+                        location: Las Vegas
+                        creation_date: 2022-10-18
+                        encounter_date: 2022-10-18
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa7
+                        event: JavaLand
+                        event_date: 2021-03-21
+                        location: Phantasialand
+                        creation_date: 2021-03-30
+                        encounter_date: 2021-03-30
+                single:
+                  summary: One confirmation on a single event
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                    user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa7
+                    event: JavaLand
+                    event_date: 2021-03-21
+                    location: Phantasialand
+                    creation_date: 2021-03-30
+                    encounter_date: 2021-03-30
+                none:
+                  summary: No confirmations
+                  value:
+                    items: []
+              schema:
+                $ref: '#/components/schemas/ConfirmationList'
+  /v1/confirmations/own:
+    get:
+      summary: Get a list with all encounter confirmations belonging to the current user
+      description: Authorized endpoint returning a list of all encounter confirmations of the current user
+      tags:
+        - Confirmation
+      operationId: readOwnConfirmations
+      security: []
+      responses:
+        200:
+          description: A list of own confirmations
+          content:
+            application/json:
+              examples:
+                multiple:
+                  summary: Two confirmations on two encounters
+                  value:
+                    items:
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaOne
+                        event_date: 2022-10-16
+                        location: Las Vegas
+                        creation_date: 2022-10-17
+                        encounter_date: 2022-10-17
+                      - id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                        event: JavaLand
+                        event_date: 2021-03-21
+                        location: Phantasialand
+                        creation_date: 2021-03-30
+                        encounter_date: 2021-03-30
+                single:
+                  summary: One confirmation on a single event
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa7
+                    user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+                    event: JavaLand
+                    event_date: 2021-03-21
+                    location: Phantasialand
+                    creation_date: 2021-03-30
+                    encounter_date: 2021-03-30
+                none:
+                  summary: No confirmations
+                  value:
+                    items: []
+              schema:
+                $ref: '#/components/schemas/ConfirmationList'
 
 components:
   schemas:
@@ -189,9 +292,10 @@ components:
         id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
         user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
         event: JavaOne
-        event_date: 2022-10-16
+        event_date: 2022
         location: Las Vegas
         creation_date: 2022-10-17
+        encounter_date: 2022-10-17
         description: At the bar
         likeliness: 10
         confirmations: 27
@@ -207,6 +311,8 @@ components:
           minLength: 5
           maxLength: 50
         event_date:
+          type: string
+        encounter_date:
           type: string
           format: date
         location:
@@ -241,6 +347,9 @@ components:
         event_date:
           type: string
           format: date
+        encounter_date:
+          type: string
+          format: date
         location:
           type: string
           maxLength: 50
@@ -248,6 +357,47 @@ components:
           type: string
           maxLength: 1024
           nullable: true
+    ConfirmationList:
+      type: object
+      description: A list of confirmations
+      properties:
+        encounters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Confirmation'
+    Confirmation:
+      type: object
+      description: Represents a Duke encounter confirmation
+      example:
+        id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        user_id: 3fa85f65-1234-4562-b3fd-1c963f66afa6
+        event: JavaOne
+        event_date: 2022
+        location: Las Vegas
+        creation_date: 2022-10-17
+        encounter_date: 2022-10-17
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        event:
+          type: string
+          minLength: 5
+          maxLength: 50
+        event_date:
+          type: string
+        encounter_date:
+          type: string
+          format: date
+        location:
+          type: string
+          maxLength: 50
+        creation_date:
+          type: string
+          format: date
     CreateConfirmation:
       type: object
       description: Create a new confirmation of an existing encounter with all required information
