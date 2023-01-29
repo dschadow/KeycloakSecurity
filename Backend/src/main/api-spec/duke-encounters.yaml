@@ -63,7 +63,7 @@ paths:
       tags:
         - Encounter
       operationId: readLatestEncounters
-      security: {}
+      security: []
       responses:
         200:
           description: A list of the latest Duke encounters
