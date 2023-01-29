@@ -14,7 +14,8 @@ info:
     name: Apache License 2.0
 
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8080/api'
+    description: Local dev
 
 tags:
   - name: Encounter
