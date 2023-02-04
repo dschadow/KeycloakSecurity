@@ -225,6 +225,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Encounter'
+        404:
+          description: Encounter not found
   /v1/confirmations/latest:
     get:
       summary: Get a list with the latest encounter confirmations
