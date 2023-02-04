@@ -14,7 +14,7 @@ info:
     name: Apache License 2.0
 
 servers:
-  - url: 'http://localhost:8080/api'
+  - url: http://localhost:8080/api
     description: Local dev
 
 tags:
