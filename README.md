@@ -12,3 +12,5 @@ This repository contains a web application named **Duke Encounters** which uses 
 
 # Setup
 
+## Meta
+![Build](https://github.com/dschadow/KeycloakSecurity/workflows/Build/badge.svg) [![codecov](https://codecov.io/gh/dschadow/KeycloakSecurity/branch/main/graph/badge.svg?token=HXSEWNBX3K)](https://codecov.io/gh/dschadow/KeycloakSecurity) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
