@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
-    - name: Set up Java 17
+    - name: Configure Java
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
@@ -23,3 +23,5 @@ jobs:
         cache: 'maven'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Generate Codecov Report
+      uses: codecov/codecov-action@v3
