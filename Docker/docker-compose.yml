@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  postgres:
+  keycloak-db:
     image: postgres:15-alpine
     container_name: keycloak-security-db
     environment:
@@ -24,7 +24,7 @@ services:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=password
       - KC_DB_SCHEMA=public
-      - KC_DB_URL_HOST=postgres
+      - KC_DB_URL_HOST=keycloak-db
       - KC_DB_URL_DATABASE=keycloak
       - KC_DB_USERNAME=admin
       - KC_DB_PASSWORD=password
@@ -34,7 +34,7 @@ services:
     networks:
       - keycloak-security
     depends_on:
-      - postgres
+      - keycloak-db
 
 volumes:
   keycloak_security_db_data:
