@@ -5,7 +5,7 @@ This repository contains a web application named **Duke Encounters** which uses 
 
 # Requirements
 
-- Java 17
+- Java 21
 - Maven 3
 - Docker (for running Keycloak)
 - Keycloak (provided as Docker container)
