@@ -1,8 +1,6 @@
-version: "3"
-
 services:
   keycloak-db:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     container_name: keycloak-security-db
     environment:
       # we keep the passwords simple here
@@ -17,7 +15,7 @@ services:
     networks:
       - keycloak-security
   keycloak:
-    image: quay.io/keycloak/keycloak:25.0
+    image: quay.io/keycloak/keycloak:26.0
     container_name: keycloak-security-keycloak
     environment:
       # we keep the passwords simple here
