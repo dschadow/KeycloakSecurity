@@ -15,7 +15,7 @@ services:
     networks:
       - keycloak-security
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0
+    image: quay.io/keycloak/keycloak:26.2
     container_name: keycloak-security-keycloak
     environment:
       # we keep the passwords simple here
