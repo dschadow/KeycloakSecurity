@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>3.0.2</version>
+                <version>3.0.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -112,7 +112,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>12.2.0</version>
+                <version>12.2.1</version>
                 <reportSets>
                     <reportSet>
                         <reports>
