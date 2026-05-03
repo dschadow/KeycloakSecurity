@@ -120,6 +120,9 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+                <configuration>
+                    <nvdApiKey>${env.NVD_KEY}</nvdApiKey>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>
